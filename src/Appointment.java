@@ -38,6 +38,6 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return super.toString() + ", Patient: " + patient + ", Doctor: " + doctor + ", Date: " + date;
+        return super.toString() + " " + patient.toString() + " " + doctor.toString() + ", Date: " + date;
     }
 }
