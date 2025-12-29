@@ -33,7 +33,23 @@ public class ManagementSystem implements HospitalManager{
 
     @Override
     public void addNurse() {
+        System.out.println("Enter Nurse's Name: ");
+        String name = scanner.nextLine();
 
+        System.out.println("Enter Nurse's ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter Nurse's department: ");
+        String department = scanner.nextLine();
+
+        System.out.println("Enter Nurse's Ward No: ");
+        int wardNo = scanner.nextInt();
+        scanner.nextLine();
+
+        nurses.add(new Nurse(name, id, department, wardNo));
+
+        System.out.println("New Nurse Added Successfully");
     }
 
     @Override
