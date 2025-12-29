@@ -54,7 +54,26 @@ public class ManagementSystem implements HospitalManager{
 
     @Override
     public void addPatient() {
+        System.out.println("Enter Patient's Name: ");
+        String name = scanner.nextLine();
 
+        System.out.println("Enter Patient's ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter Patient's age: ");
+        int age = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter Patient's address: ");
+        String address = scanner.nextLine();
+
+        System.out.println("Enter Patient's phone number: ");
+        String phoneNumber = scanner.nextLine();
+
+        patients.add(new Patient(name, id, age, address, phoneNumber));
+
+        System.out.println("New Patient Added Successfully");
     }
 
     @Override
