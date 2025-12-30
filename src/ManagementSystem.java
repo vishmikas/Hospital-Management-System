@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,7 +7,7 @@ public class ManagementSystem implements HospitalManager{
     ArrayList<Doctor> doctors = new ArrayList<>();
     ArrayList<Nurse> nurses = new ArrayList<>();
     ArrayList<Patient> patients = new ArrayList<>();
-    ArrayList<Appointment> appointsments = new ArrayList<>();
+    ArrayList<Appointment> appointments = new ArrayList<>();
 
     Scanner scanner = new Scanner(System.in);
 
@@ -78,7 +79,66 @@ public class ManagementSystem implements HospitalManager{
 
     @Override
     public void bookAppointment() {
+        Patient newPatient = null;
+        Doctor newDoctor = null;
 
+        System.out.println("Enter patient ID: ");
+        int patientID;
+
+        try {
+            patientID = scanner.nextInt();
+        }
+        catch(Exception e) {
+            System.out.println("Invalid ID");
+            return;
+        }
+        scanner.nextLine();
+
+        for(Patient patient : patients) {
+            if(patient.getID() == patientID){
+                newPatient = patient;
+                break;
+            }
+        }
+        if(newPatient == null){
+            System.out.println("Patient ID does not exist");
+            return;
+        }
+
+        System.out.println("Enter doctor's ID: ");
+        int doctorID;
+        try {
+            doctorID = scanner.nextInt();
+        }
+        catch(Exception e) {
+            System.out.println("Invalid ID");
+            return;
+        }
+        scanner.nextLine();
+
+        for(Doctor doctor : doctors) {
+            if(doctor.getID() == doctorID) {
+                newDoctor = doctor;
+                break;
+            }
+        }
+        if(newDoctor == null){
+            System.out.println("Doctor ID does not exist");
+            return;
+        }
+
+        System.out.println("Enter appointment date(YYYY-MM-DD): )");
+        LocalDate date;
+        try{
+            date = LocalDate.parse(scanner.nextLine());
+        }
+        catch(Exception e) {
+            System.out.println("Invalid date");
+            return;
+        }
+
+        appointments.add(new Appointment (newPatient, newDoctor, date));
+        System.out.println("New Appointment Added Successfully");
     }
 
     @Override
