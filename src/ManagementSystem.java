@@ -179,6 +179,74 @@ public class ManagementSystem implements HospitalManager{
 
     @Override
     public void changeAppointmentStatus(int status) {
+        System.out.println("Enter appointment index: ");
+        int index = scanner.nextInt();
+        scanner.nextLine();
+        Appointment newAppointment = null;
+        for(Appointment appointment : appointments) {
+            if (appointment.getAppointmentIndex() == index){
+                newAppointment = appointment;
+                break;
+            }
+        }
+
+        System.out.println("1.Patient");
+        System.out.println("2.Doctor");
+        System.out.println("3.Date");
+        System.out.println("Enter the number of the detail want to change: ");
+        int option = scanner.nextInt();
+        scanner.nextLine();
+
+        switch(option) {
+            case 1 :
+                System.out.println("Enter new patient ID: ");
+                int newPatientID;
+                try {
+                    newPatientID = scanner.nextInt();
+                }
+                catch(Exception e) {
+                    System.out.println("Invalid ID");
+                    return;
+                }
+                scanner.nextLine();
+
+                Patient newPatient = null;
+                for(Patient patient : patients) {
+                    if(patient.getID() == newPatientID) {
+                        newPatient = patient;
+                        break;
+                    }
+                }
+                if(newPatient == null) {
+                    System.out.println("Patient ID does not exist");
+                }
+                newAppointment.setPatient(newPatient);
+                break;
+
+            case 2 :
+                System.out.println("Enter new doctor's ID: ");
+                int newDoctorID;
+                try {
+                    newDoctorID = scanner.nextInt();
+                }
+                catch(Exception e) {
+                    System.out.println("Invalid ID");
+                    return;
+                }
+                scanner.nextLine();
+
+                Doctor newDoctor = null;
+                for(Doctor doctor : doctors) {
+                    if(doctor.getID() == newDoctorID) {
+                        newDoctor = doctor;
+                    }
+                }
+                if(newDoctor == null) {
+                    System.out.println("Doctor ID does not exist");
+                }
+                newAppointment.setDoctor(newDoctor);
+                break;
+        }
 
     }
 

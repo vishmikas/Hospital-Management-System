@@ -2,14 +2,20 @@ import java.time.LocalDate;
 
 public class Appointment {
 
+    private int appointmentIndex;
     private Patient patient;
     private Doctor doctor;
     private LocalDate date;
 
-    public Appointment(Patient patient, Doctor doctor, LocalDate date) {
+    public Appointment(int apponitmentIndex, Patient patient, Doctor doctor, LocalDate date) {
+        this.appointmentIndex = apponitmentIndex;
         this.patient = patient;
         this.doctor = doctor;
         this.date = date;
+    }
+
+    public int setAppointmentIndex(int apponitmentIndex) {
+        this.appointmentIndex  = apponitmentIndex;
     }
 
     public void setPatient(Patient patient) {
@@ -22,6 +28,10 @@ public class Appointment {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public int getAppointmentIndex() {
+        return appointmentIndex;
     }
 
     public Patient getPatient() {
