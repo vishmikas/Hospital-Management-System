@@ -155,7 +155,14 @@ public class ManagementSystem implements HospitalManager{
 
     @Override
     public void viewNurses() {
-
+        if(nurses.isEmpty()) {
+            System.out.println("No nurses found");
+        }
+        else {
+            for (Nurse nurse : nurses) {
+                System.out.println(nurse.toString());
+            }
+        }
     }
 
     @Override
